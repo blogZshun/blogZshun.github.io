@@ -31,6 +31,31 @@
     </entry>
     
     
+    
+    <entry>
+      <title>Hexo博客框架搭建</title>
+      <link href="/2023/08/03/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/"/>
+      <url>/2023/08/03/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/Hexo%E6%90%AD%E5%BB%BA/</url>
+      
+        <content type="html"><![CDATA[<h2 id="搭建博客的初衷"><a href="#搭建博客的初衷" class="headerlink" title="搭建博客的初衷"></a>搭建博客的初衷</h2><p>作为一个只有deadline才能驱动的重症拖延症患者，我已经忘了自己为什么要搭建这样一个静态博客网站了，大抵隐约是在一个无聊的躺在床上刷B站的日子，我偶然间刷到一个UP分享自己用Hexo搭建了一个私人博客的视频，当时虎躯一震心想自己搭建博客网站也太酷了吧，又想到自己每天只能在床上刷刷短视频苟且度日不禁悲从中来，于是又想也许我也可以搭个私人博客来当自己的电子笔记本，这样也许还能督促自己时不时的写写博客学点新东西。于是乎，我开始在bilbil大学上搜索hexo搭建博客的教程，看了几个大概的教程后我最后基本上都是依据这个良心UP主的教学视频来搭建的我自己的个人博客的<a href="https://www.bilibili.com/video/BV1Ko4y1S7mv/?spm_id_from=333.999.0.0">良心教程</a>,中途我也曾因为没有deadline导致驱动力不足中间将这个博客搭建计划停滞了许久，后来由于暑假放假在家天气一直下雨不想学习又无事可做所以才有心血来潮重启了这一计划。</p><p>那么我又为什么要写今天的这篇博客呢，一方面我觉得如果有小伙伴也想搭建这样一个静态博客来当作自己的电子笔记本或者自己的私人朋友圈，也许我可以分享一些有用的经验；另一方面我觉得大部分的教程视频可能全部从头看到尾还是有些太花时间了，所以我觉得如果有小伙伴想要搭建一个和我差不多样式的博客的话可以直接克隆我的github仓库再对照<a href="https://butterfly.js.org/page/2/#content-inner">butterfly的配置文档</a>进行一点微调就可以了，此外我也会将一些我觉得需要细致观看的教程视频点出来，方便大家有针对性的学习.</p><h2 id="hexo博客搭建教程"><a href="#hexo博客搭建教程" class="headerlink" title="hexo博客搭建教程"></a>hexo博客搭建教程</h2><h3 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h3><p>首先你需要在电脑上下载并安装好Git和Node.js具体的教程可以参考我上面提到的<a href="https://www.bilibili.com/video/BV1oU4y1n7hn/?spm_id_from=333.788&vd_source=354d85fb81f54eb7db67d0a852150aba">良心教程</a>。然后新建一个文件夹，右键git bash here,然后输入：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/blogZshun/blogZshun.github.io.git</span><br></pre></td></tr></table></figure><p>即可下载好我初步配置过了的博客文档。这时候你还需要去下载并安装VScode来作为我们日后编写博客与管理代码的编辑器。下载并安装好VScode后，点击左上角的文件——打开文件夹，选择并打开你克隆到本地的博客文档文件夹（blog_code），便可以在左侧资源管理器中查看到静态博客所需的代码文件。接着点击查看——终端打开VScode中自带的终端命令行，输入并运行：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure><p>来安装运行本地博客所需的依赖，接着再在终端中输入并运行下列命令，来进行本地静态博客的查看。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure><p>运行成功后会有如下显示：</p><p><img src="https://cdn.jsdelivr.net/gh/blogZshun/WH_picgo/img/20230822161019.png" alt="hexo s 运行成功"></p><p>接着打开浏览器访问<a href="http://localhost:4000/">http://localhost:4000/</a>, 即可实现本地博客预览。顺便在这里再讲一下以后会用到的hexo命令，我们在编写日常博客时基本上只会用到以下四个常用的hexo命令：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">hexo s  <span class="comment">#用于本地博客的预览</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#hexo 三板斧：</span></span><br><span class="line">hexo clean  <span class="comment">#清除本地博客缓存</span></span><br><span class="line">hexo g    <span class="comment">#生成博客静态文件</span></span><br><span class="line">hexo d    <span class="comment">#将博客部署到远端</span></span><br></pre></td></tr></table></figure><h3 id="博客代码的文件配置修改"><a href="#博客代码的文件配置修改" class="headerlink" title="博客代码的文件配置修改"></a>博客代码的文件配置修改</h3><p>接下来你需要简单了解一下所克隆的本地博客代码的文件架构，首先是根目录下的两个配置文件：_config.yml（系统配置文件）以及_config.butterfly.yml（主题配置文件），这两个文件的配置都在<a href="https://butterfly.js.org/page/2/#content-inner">butterfly的配置文档</a>有相应的详细介绍，同时配置这两个文件也是整个博客搭建中最为繁杂的工作，所以我觉得如果你只想搭建一个和我差不多样式的博客完全可以只修改这两个文件中的我做了中文注释的部分以及相应的图片展示部分。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Hexo博客搭建笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
   
   
 </search>
